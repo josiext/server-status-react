@@ -16,12 +16,22 @@ describe("<Nodes />", () => {
         online: false,
         name: "Node 1",
         loading: false,
+        blocks: {
+          loading: false,
+          error: null,
+          data: [],
+        },
       },
       {
         url: "https://secret-lowlands-62331.herokuapp.com",
         online: false,
         name: "Node 2",
         loading: false,
+        blocks: {
+          loading: false,
+          error: null,
+          data: [],
+        },
       },
     ],
   };

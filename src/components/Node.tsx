@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 import colors from "../constants/colors";
 import Status from "./Status";
 import { Node as NodeType } from "../types/Node";
+import NodeMessage from "./NodeMessage";
 
 type Props = {
   node: NodeType;
@@ -44,6 +45,12 @@ const BoxSummaryContent = styled(Box)({
   alignItems: "center",
   width: "100%",
   paddingRight: 20,
+});
+
+const BoxBlockContainer = styled(Box)({
+  backgroundColor: "rgba(0, 0, 0, 0.12)",
+  padding: 6,
+  marginBottom: 4,
 });
 
 const TypographyHeading = styled(Typography)({
@@ -80,7 +87,22 @@ const Node: React.FC<Props> = ({ node, expanded, toggleNodeExpanded }) => {
         </BoxSummaryContent>
       </AccordionSummaryContainer>
       <AccordionDetails>
-        <Typography>Blocks go here</Typography>
+        {node.blocks.loading && <NodeMessage>Loading...</NodeMessage>}
+
+        {!node.blocks.loading &&
+          !node.blocks.error &&
+          node.blocks.data.map((item) => (
+            <BoxBlockContainer>
+              <Typography color="#304FFE" fontSize="10px">
+                {item.id}
+              </Typography>
+              <Typography fontSize="14px">{item.data}</Typography>
+            </BoxBlockContainer>
+          ))}
+
+        {!node.blocks.loading && node.blocks.error && (
+          <NodeMessage>Unexpected error, please try again later.</NodeMessage>
+        )}
       </AccordionDetails>
     </AccordionRoot>
   );
