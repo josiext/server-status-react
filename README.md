@@ -1,5 +1,14 @@
 # Server Status
 
+![app](./images/main.PNG)
+
+**Technologies:**
+
+- Typescript
+- Redux Toolkit
+- Redux Thunks
+- Material UI
+
 ## Installation
 
 1. `git clone repo`
@@ -10,4 +19,3 @@
 ## Start 
 
 1. `npm start`
-
