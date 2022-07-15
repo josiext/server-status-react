@@ -4,6 +4,7 @@
 
 **Technologies:**
 
+- React
 - Typescript
 - Redux Toolkit
 - Redux Thunks
